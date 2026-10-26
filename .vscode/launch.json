@@ -4,7 +4,7 @@
             "type": "lldb-dap",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/build/main/tetris.exe",
+            "program": "${workspaceFolder}/build/main/snake.exe",
             "args": [],
             "env": [],
             "cwd": "${workspaceFolder}",

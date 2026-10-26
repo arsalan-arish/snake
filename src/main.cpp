@@ -1,7 +1,14 @@
-#include <raylib.h>
+#include <snake/program.h>
+#include <snake/game.h>
 
-
-int main(int argc, char* argv[], char* envp[])
+int main(int argc, char* argv[])
 {
-    InitWindow(800, 600, "Snake Game");
+    // Program Resources & Config managed by program class
+    Program prog(argv);
+
+    // Game Resources & Config managed by game class
+    Game game;
+
+    // Game Loop
+    game.loop();
 }

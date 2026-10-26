@@ -9,18 +9,30 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable( ${PROJECT_NAME} 
+add_executable(${PROJECT_NAME} 
     src/main.cpp
+    include/snake/game.h
+    src/game.cpp
+    include/snake/program.h
+    src/program.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib-4.5.0_win64_msvc16/include
+    # ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib-4.5.0_win64_msvc16/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/include
 )
 target_link_directories(${PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib-4.5.0_win64_msvc16/lib
+    # ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib-4.5.0_win64_msvc16/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/lib/x64
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    "raylibdll"
+    # "raylibdll"
+    "SDL3"
+)
+
+target_precompile_headers(${PROJECT_NAME} PRIVATE
+    <SDL3/SDL.h>
+    <SDL3/SDL_gpu.h>
 )
 
 ## === Replicate the Visual Studio Environment ===
