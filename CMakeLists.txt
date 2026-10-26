@@ -11,28 +11,138 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(${PROJECT_NAME} 
     src/main.cpp
-    include/snake/game.h
     src/game.cpp
-    include/snake/program.h
     src/program.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    # ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib-4.5.0_win64_msvc16/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/include
 )
 target_link_directories(${PROJECT_NAME} PRIVATE
-    # ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib-4.5.0_win64_msvc16/lib
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/lib/x64
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    # "raylibdll"
     "SDL3"
 )
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE
     <SDL3/SDL.h>
-    <SDL3/SDL_gpu.h>
+##    Concepts & Utilities ---
+#    <concepts>
+#    <coroutine>
+#    <utility>
+#    <memory>
+#    <memory_resource>
+#    <scoped_allocator>
+#    <functional>
+#    <initializer_list>
+#    <tuple>
+#    <any>
+#    <optional>
+#    <variant>
+#    <type_traits>
+#    <ratio>
+#    <chrono>
+#    <typeindex>
+#    <typeinfo>
+#    <debugging> // C++26
+
+##    Strings & Text ---
+#    <string>
+#    <string_view>
+#    <charconv>
+#    <format>
+#    <text_encoding> // C++26
+
+##    Containers & Collections ---
+#    <array>
+   <vector>
+#    <deque>
+#    <list>
+#    <forward_list>
+#    <set>
+#    <map>
+#    <unordered_set>
+#    <unordered_map>
+#    <stack>
+#    <queue>
+#    <span>
+#    <mdspan> // C++23
+#    <flat_set> // C++23
+#    <flat_map> // C++23
+#    <generator> // C++23
+
+##    Enumerators & Algorithms ---
+#    <iterator>
+#    <algorithm>
+#    <execution>
+#    <ranges>
+
+##    Math & Numerics ---
+#    <cmath>
+#    <complex>
+#    <numeric>
+#    <random>
+#    <valarray>
+#    <bit>
+#    <numbers>
+#    <linalg> // C++26
+
+##    Input/Output & Filesystem ---
+#    <iostream>
+#    <istream>
+#    <ostream>
+#    <fstream>
+#    <sstream>
+#    <syncstream>
+#    <strstream> // Deprecated but standard
+#    <iomanip>
+#    <streambuf>
+#    <filesystem>
+#    <print> // C++23
+
+##    Concurrency & Threading ---
+#    <thread>
+#    <mutex>
+#    <shared_mutex>
+#    <condition_variable>
+#    <future>
+#    <atomic>
+#    <latch>
+#    <barrier>
+#    <semaphore>
+#    <stdatomic.h>
+
+##    Diagnostics & Localization ---
+#    <exception>
+#    <stdexcept>
+#    <cassert>
+#    <system_error>
+#    <stacktrace>
+#    <locale>
+#    <codecvt> // Deprecated but standard
+
+##    Standard Library Wrappers ---
+#    <cctype>
+#    <cwctype>
+#    <cstring>
+#    <cwchar>
+#    <cuchar>
+#    <cmath>
+#    <cfenv>
+#    <cstdlib>
+#    <cstddef>
+#    <cstdint>
+#    <cfloat>
+#    <climits>
+#    <cstdarg>
+#    <csetjmp>
+#    <csignal>
+#    <ctime>
+#    <cerrno>
+#    <clocale>
+#    <cinttypes>
+
 )
 
 ## === Replicate the Visual Studio Environment ===

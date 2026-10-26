@@ -10,5 +10,5 @@ int main(int argc, char* argv[])
     Game game;
 
     // Game Loop
-    game.loop();
+    game.run();
 }
