@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "lldb-dap",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/build/main/tetris.exe",
+            "args": [],
+            "env": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: build"
+        },
+    ]
+}
