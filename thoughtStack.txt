@@ -1,0 +1,9 @@
+Wrap SDL into a C++ idiomatic interface:
+    Memory & Resource Management; RAII
+    Simulating OOP in C → Actual OOP in C++
+    Namespacing symbols, using keyword
+    Templates & Concepts & Function Overloading & Default Args ; for Generics
+    Exceptions?
+
+
+Make an interface for collision detection

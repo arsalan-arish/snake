@@ -2,32 +2,21 @@
 #pragma once
 #include <snake/types.h>
 
-struct pos {
-    f32 x;
-    f32 y;
-};
-
-struct rect {
-    f32 w;
-    f32 h;
-};
 
 class Sprite
 {
 protected:
-    Sprite(f32 width, f32 height, f32 x, f32 y, SDL_Color color) : 
-        rect({width, height}),
-        pos({x, y}),
+    Sprite(SDL_FRect rect, SDL_Color color) : 
+        rect(rect),
         color(color) 
     {};
 
     f32 m_speed = 450; // pix/sec
     
 public:
+    SDL_FRect   rect;  // A sprite implementation must not initialize x & y manually, only recieve it in its constructor and set.
+    SDL_FRect   prev_rect;
     SDL_Color   color;
-    struct rect rect;
-    struct pos  pos;
-    struct pos  prev_pos;
 
     virtual void update(const b8* keyboardState, f64 delta_time) = 0;
     virtual ~Sprite() = default;

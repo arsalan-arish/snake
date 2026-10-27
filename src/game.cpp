@@ -41,7 +41,9 @@ Game::Game()
         SDL_Log("Could not set up VSync: %s", SDL_GetError());
     }
 
-    m_sprites.emplace_back(make_unique<Snake>(m_width / 2, m_height / 2));
+    m_sprites.emplace_back(
+        make_unique<Snake>(m_width / 2, m_height / 2)
+    );
 
     m_prev_time = SDL_GetTicksNS() / 1e9;
 }
@@ -100,9 +102,9 @@ void Game::event()
 void Game::update()
 {
     const b8* keyboardState = SDL_GetKeyboardState(nullptr);
-    //! Parallelize this loop because most spent time is waiting
+    // Async/Parallelize this loop because most spent time is waiting
     for (auto& sprite : m_sprites) {
-        sprite->prev_pos = sprite->pos;
+        sprite->prev_rect = sprite->rect;
         sprite->update(keyboardState, m_update_spf);
     }
 }
@@ -115,8 +117,8 @@ void Game::render()
     for (auto& sprite : m_sprites) {
         SDL_SetRenderDrawColor(m_renderer, sprite->color.r, sprite->color.g, sprite->color.b, sprite->color.a);
         SDL_FRect rect = {
-            sprite->pos.x + (sprite->pos.x - sprite->prev_pos.x) * m_alpha,
-            sprite->pos.y + (sprite->pos.y - sprite->prev_pos.y) * m_alpha,
+            sprite->rect.x + (sprite->rect.x - sprite->prev_rect.x) * m_alpha,
+            sprite->rect.y + (sprite->rect.y - sprite->prev_rect.y) * m_alpha,
             sprite->rect.w,
             sprite->rect.h
         };
