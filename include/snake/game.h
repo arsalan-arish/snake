@@ -1,6 +1,13 @@
 #pragma once
-#include <vector>
 #include <snake/types.h>
+#include <snake/sprites/snake.h>
+#include <snake/sprite.h>
+#include <vector>
+#include <memory>
+
+using std::vector;
+using std::pair;
+using std::unique_ptr;
 
 class Game
 {
@@ -11,9 +18,15 @@ public:
     void run();
 
 private:
+    /* Window state & Multimedia Resources */
+    const u16 m_height = 600;
+    const u16 m_width  = 800;
+    SDL_Window* m_window;
+    SDL_Renderer* m_renderer;
+
     /* Game loop state */
+    SDL_Event        m_event;
     b8               m_running     = true;
-    std::vector<int> m_event_queue = {};
     f64              m_prev_time;
     f64              m_current_time;
     f64              m_delta_time  = 0;
@@ -26,4 +39,8 @@ private:
     void event();   // Must be lightweight 
     void update();  // Does the heavylifting compute
     void render();  // Graphics Pipeline
+
+    
+    /* Game Objects */
+    vector<unique_ptr<Sprite>> m_sprites;
 };
