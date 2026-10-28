@@ -20,20 +20,3 @@ typedef long long isize;
 typedef size_t usize;
 
 typedef bool b8;
-
-// enum Containing types, useful for generic behavior
-enum class Type {
-    I8, I16, I32, I64,
-    
-    U8, U16, U32, U64,
-
-    F32, F64, F128,
-
-    ISIZE, USIZE,
-
-    B8,
-
-    POINTER,
-
-    OTHER
-};

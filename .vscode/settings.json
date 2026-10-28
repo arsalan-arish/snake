@@ -1,7 +1,7 @@
 {
     "clangd.arguments": [
         "--compile-commands-dir=build/main", 
-        "--header-insertion=never"
+        // "--header-insertion=never"
     ],
     "cmake.modifyLists.addNewSourceFiles": "yes",
     "cmake.modifyLists.removeDeletedSourceFiles": "yes",

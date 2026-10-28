@@ -72,6 +72,7 @@ void Game::run()
             this->event();
             if (!m_running) break;
         }
+        if (!m_running) break;
 
         // Compute & Update the game physics state
         while (m_accumulator >= m_update_spf) {

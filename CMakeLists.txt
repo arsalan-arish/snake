@@ -31,6 +31,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE
     <SDL3/SDL.h>
+    <glm/glm.hpp>
 ##    Concepts & Utilities ---
 #    <concepts>
 #    <coroutine>
