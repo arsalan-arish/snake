@@ -31,14 +31,14 @@ Snake::~Snake()
 void Snake::update(const b8* keyboardState, f64 dt) {
 
     b8 change = false;
-    dvec2 force;
+    dvec2 force{0.0, 0.0};
 
     auto& k = keyboardState;
-    if      (k[SDL_SCANCODE_W]) { force = {0.0, -1000.0}; change = true; }
-    else if (k[SDL_SCANCODE_S]) { force = {0.0, 1000.0};  change = true; }
-    else if (k[SDL_SCANCODE_D]) { force = {1000.0, 0.0};  change = true; }
-    else if (k[SDL_SCANCODE_A]) { force = {-1000.0, 0.0}; change = true; }
-    
+    if (k[SDL_SCANCODE_W]) { force.y -= 2000.0; change = true; }
+    if (k[SDL_SCANCODE_S]) { force.y += 2000.0; change = true; }
+    if (k[SDL_SCANCODE_D]) { force.x += 2000.0; change = true; }
+    if (k[SDL_SCANCODE_A]) { force.x -= 2000.0; change = true; }
+ 
     if (change) {
         m_acceleration  = force / m_mass;
         m_velocity     += m_acceleration * dt;
