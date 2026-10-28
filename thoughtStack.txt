@@ -2,8 +2,12 @@ Wrap SDL into a C++ idiomatic interface:
     Memory & Resource Management; RAII
     Simulating OOP in C → Actual OOP in C++
     Namespacing symbols, using keyword
-    Templates & Concepts & Function Overloading & Default Args ; for Generics
-    Exceptions?
+    Templates & Concepts & Function Overloading & Default Args; for Generics
+    Exceptions
 
 
-Make an interface for collision detection
+What should be the contract between an environment class and the classes of objects inside?
+Should the Game class directly own a window or there should be a window class?
+How can a game of any scale be modelled? For example:
+    A Game class managing the entire game, containing handles to resources. It has a unified interface with 'sprites', as it renders them on the screen.
+    But this does not feel to scale well. Like what if there are supposed to be multiple windows? What if there are 3D objects and complex scenarios of logic for them? What if there are like multiple screens for a game, like levels, settings, how do screens even fit in this model?
