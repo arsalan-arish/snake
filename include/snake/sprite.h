@@ -10,8 +10,6 @@ protected:
         rect(rect),
         color(color) 
     {};
-
-    f32 m_speed = 450; // pix/sec
     
 public:
     SDL_FRect   rect;  // A sprite implementation must not initialize x & y manually, only recieve it in its constructor and set.

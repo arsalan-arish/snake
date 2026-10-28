@@ -18,12 +18,15 @@ add_executable(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm/include
 )
 target_link_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/lib/x64
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm/lib
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
     "SDL3"
+    "glm"
 )
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE
@@ -32,7 +35,7 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
 #    <concepts>
 #    <coroutine>
 #    <utility>
-#    <memory>
+   <memory>
 #    <memory_resource>
 #    <scoped_allocator>
 #    <functional>
@@ -49,10 +52,10 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
 #    <debugging> // C++26
 
 ##    Strings & Text ---
-#    <string>
-#    <string_view>
-#    <charconv>
-#    <format>
+   <string>
+   <string_view>
+   <charconv>
+   <format>
 #    <text_encoding> // C++26
 
 ##    Containers & Collections ---
@@ -90,7 +93,7 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
 #    <linalg> // C++26
 
 ##    Input/Output & Filesystem ---
-#    <iostream>
+   <iostream>
 #    <istream>
 #    <ostream>
 #    <fstream>
@@ -115,8 +118,8 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE
 #    <stdatomic.h>
 
 ##    Diagnostics & Localization ---
-#    <exception>
-#    <stdexcept>
+   <exception>
+   <stdexcept>
 #    <cassert>
 #    <system_error>
 #    <stacktrace>

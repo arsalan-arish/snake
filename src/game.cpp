@@ -69,20 +69,17 @@ void Game::run()
 
         // Empty the event queue; Process all
         while (SDL_PollEvent(&m_event)) {
-            if (!m_running) break;
             this->event();
+            if (!m_running) break;
         }
 
         // Compute & Update the game physics state
-        if (!m_running) break;
         while (m_accumulator >= m_update_spf) {
             this->update();
             m_accumulator -= m_update_spf;
         }
-        m_alpha = m_accumulator / m_update_spf;
 
         // Render frame graphics from the game state
-        if (!m_running) break;
         this->render();
     }
 }
@@ -102,7 +99,7 @@ void Game::event()
 void Game::update()
 {
     const b8* keyboardState = SDL_GetKeyboardState(nullptr);
-    // Async/Parallelize this loop because most spent time is waiting
+    // Async/Parallelize this loop because most spent time is waiting, if later you offload to GPU.
     for (auto& sprite : m_sprites) {
         sprite->prev_rect = sprite->rect;
         sprite->update(keyboardState, m_update_spf);
@@ -111,6 +108,9 @@ void Game::update()
 
 void Game::render()
 {
+    // Alpha Blending (Visual Interpolation)
+    m_alpha = m_accumulator / m_update_spf;
+
     SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
     SDL_RenderClear(m_renderer);
 
