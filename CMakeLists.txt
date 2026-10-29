@@ -16,11 +16,19 @@ add_executable(${PROJECT_NAME}
     src/screen.cpp
     src/subscreen.cpp
     src/environment.cpp
+
+    # Imgui
+    vendor/imgui/imgui.cpp
+    vendor/imgui/imgui_demo.cpp
+    vendor/imgui/imgui_draw.cpp
+    vendor/imgui/imgui_tables.cpp
+    vendor/imgui/imgui_widgets.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
 )
 target_link_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/lib/x64
@@ -31,9 +39,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     "glm"
 )
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    "IMGUI_DEFINE_MATH_OPERATORS"
+)
+
 target_precompile_headers(${PROJECT_NAME} PRIVATE
     <SDL3/SDL.h>
     <glm/glm.hpp>
+    <imgui.h>
 ##    Concepts & Utilities ---
 #    <concepts>
 #    <coroutine>
