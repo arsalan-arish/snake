@@ -26,17 +26,25 @@ add_executable(${PROJECT_NAME}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl-cpp/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
 )
+
 target_link_directories(${PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL3-3.4.18/lib/x64
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl-cpp/lib
 )
+
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    "SDL3"
     "glm"
+    "sdl-cpp"
+)
+
+add_custom_command(TARGET snake POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl-cpp/lib/SDL3.dll"
+    $<TARGET_FILE_DIR:snake>
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
@@ -44,7 +52,6 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 )
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE
-    <SDL3/SDL.h>
     <glm/glm.hpp>
     <imgui.h>
 ##    Concepts & Utilities ---
