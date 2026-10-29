@@ -5,7 +5,6 @@
 
 #include <snake/game.hpp>
 #include <snake/types.h>
-#include <snake/sprites/snake.hpp>
 
 using std::string;
 using std::format;

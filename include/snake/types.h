@@ -2,6 +2,10 @@
 #pragma once
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef int8_t i8;
 typedef int16_t i16;
 typedef int32_t i32;
@@ -20,3 +24,7 @@ typedef long long isize;
 typedef size_t usize;
 
 typedef bool b8;
+
+#ifdef __cplusplus
+}
+#endif
