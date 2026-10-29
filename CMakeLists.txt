@@ -13,7 +13,6 @@ add_executable(${PROJECT_NAME}
     src/main.cpp
     src/game.cpp
     src/program.cpp
-    src/sprites/snake.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include

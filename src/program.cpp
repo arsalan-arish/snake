@@ -1,4 +1,4 @@
-#include <snake/program.h>
+#include <snake/program.hpp>
 #include <filesystem>
 
 Program::Program(char* argv[]) {

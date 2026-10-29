@@ -1,7 +1,7 @@
 #pragma once
 #include <snake/types.h>
-#include <snake/sprites/snake.h>
-#include <snake/sprite.h>
+#include <snake/sprites/snake.hpp>
+#include <snake/sprite.hpp>
 #include <vector>
 #include <memory>
 
@@ -19,8 +19,6 @@ public:
 
 private:
     /* Window state & Multimedia Resources */
-    const u16 m_height = 600;
-    const u16 m_width  = 800;
     SDL_Window* m_window;
     SDL_Renderer* m_renderer;
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <snake/sprite.h>
+#include <snake/sprite.hpp>
 #include <snake/types.h>
 #include <glm/glm.hpp>
 

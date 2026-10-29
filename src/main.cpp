@@ -1,5 +1,5 @@
-#include <snake/program.h>
-#include <snake/game.h>
+#include <snake/program.hpp>
+#include <snake/game.hpp>
 
 int main(int argc, char* argv[])
 {
